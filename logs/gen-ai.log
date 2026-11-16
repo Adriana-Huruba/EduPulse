@@ -1,0 +1,546 @@
+2026-11-03 17:34:53 [main] INFO  traceId= spanId= com.example.demo.DemoApplication - Starting DemoApplication using Java 25.0.4.1 with PID 2272 (C:\MASTER\AN_I\IAPC\demo\target\classes started by Adriana in C:\MASTER\AN_I\IAPC\demo)
+2026-11-03 17:34:53 [main] INFO  traceId= spanId= com.example.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-03 17:34:54 [main] INFO  traceId= spanId= o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-11-03 17:34:54 [main] INFO  traceId= spanId= o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2026-11-03 17:34:54 [main] INFO  traceId= spanId= o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-03 17:34:54 [main] INFO  traceId= spanId= o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-11-03 17:34:54 [main] INFO  traceId= spanId= o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1098 ms
+2026-11-03 17:34:55 [main] INFO  traceId= spanId= c.e.d.r.c.SimpleRagConfiguration - Building vector store and saving to: C:\MASTER\AN_I\IAPC\demo\src\main\resources\rag\mini-employee-handbook\vector-store\vectorstore.json
+2026-11-03 17:34:55 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:34:55 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:34:55 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:34:55 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:34:55 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:34:56 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = 60d354cb-b0ea-4720-b23b-9afe3db598e5
+2026-11-03 17:34:56 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = cdf209af-78ef-44ae-8895-6b859d4f30b9
+2026-11-03 17:34:56 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = c3d65c86-3e12-4d6b-ab2e-9bd6700da648
+2026-11-03 17:34:56 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = 2a134acc-f42d-49b1-98dc-e20859efed0a
+2026-11-03 17:34:56 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = fe7b1a41-6ffe-4d21-841d-d82619d87769
+2026-11-03 17:34:56 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = 3cc96289-a91e-42ef-abde-f7c8b1245321
+2026-11-03 17:34:56 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = d9599a14-a6ee-46db-8258-a14bb12091ed
+2026-11-03 17:34:56 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = 06c20978-0d27-4e43-a76e-da39cbf82aec
+2026-11-03 17:34:57 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = fb3d6786-e01b-4be4-8a9d-e0e5b2e4299a
+2026-11-03 17:34:57 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = 5146022b-11ec-4019-a8d8-4971cf86dd42
+2026-11-03 17:34:57 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Overwriting existing vector store file: src\main\resources\rag\mini-employee-handbook\vector-store\vectorstore.json
+2026-11-03 17:34:57 [main] INFO  traceId= spanId= o.s.a.v.pgvector.PgVectorStore - Using the vector table name: rag_vector_store. Is empty: false
+2026-11-03 17:34:57 [main] INFO  traceId= spanId= o.s.a.v.pgvector.PgVectorStore - Initializing PGVectorStore schema for table: rag_vector_store in schema: public
+2026-11-03 17:34:57 [main] INFO  traceId= spanId= o.s.a.v.pgvector.PgVectorStore - vectorTableValidationsEnabled false
+2026-11-03 17:34:57 [main] INFO  traceId= spanId= com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-11-03 17:34:57 [main] INFO  traceId= spanId= com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@b887684
+2026-11-03 17:34:57 [main] INFO  traceId= spanId= com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-11-03 17:34:57 [main] INFO  traceId= spanId= c.e.d.r.c.s.RagIngestionService - force-rebuild=true -> truncating rag_vector_store
+2026-11-03 17:34:57 [main] WARN  traceId= spanId= o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'pdfWatcherService' defined in file [C:\MASTER\AN_I\IAPC\demo\target\classes\com\example\demo\rag\config\service\PdfWatcherService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'ragIngestionService': Invocation of init method failed
+2026-11-03 17:34:57 [main] INFO  traceId= spanId= com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-11-03 17:34:57 [main] INFO  traceId= spanId= com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-11-03 17:34:57 [main] INFO  traceId= spanId= o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-11-03 17:34:57 [main] INFO  traceId= spanId= o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-11-03 17:34:57 [main] ERROR traceId= spanId= o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'pdfWatcherService' defined in file [C:\MASTER\AN_I\IAPC\demo\target\classes\com\example\demo\rag\config\service\PdfWatcherService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'ragIngestionService': Invocation of init method failed
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1380)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1225)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1191)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:994)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.example.demo.DemoApplication.main(DemoApplication.java:10)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'ragIngestionService': Invocation of init method failed
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:220)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:426)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1807)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1658)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 21 common frames omitted
+Caused by: com.example.demo.rag.config.exception.RagException: Could not get pdf resources!
+	at com.example.demo.rag.config.service.RagIngestionService.getResources(RagIngestionService.java:137)
+	at com.example.demo.rag.config.service.RagIngestionService.initializePgVectorStore(RagIngestionService.java:78)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:453)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:397)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:217)
+	... 34 common frames omitted
+Caused by: java.io.FileNotFoundException: class path resource [rag/qa-over-internal-docs/] cannot be resolved to URL because it does not exist
+	at org.springframework.core.io.ClassPathResource.getURL(ClassPathResource.java:227)
+	at org.springframework.core.io.support.PathMatchingResourcePatternResolver.findPathMatchingResources(PathMatchingResourcePatternResolver.java:763)
+	at org.springframework.core.io.support.PathMatchingResourcePatternResolver.getResources(PathMatchingResourcePatternResolver.java:390)
+	at com.example.demo.rag.config.service.RagIngestionService.getResources(RagIngestionService.java:130)
+	... 40 common frames omitted
+2026-11-03 17:38:00 [main] INFO  traceId= spanId= com.example.demo.DemoApplication - Starting DemoApplication using Java 25.0.4.1 with PID 32804 (C:\MASTER\AN_I\IAPC\demo\target\classes started by Adriana in C:\MASTER\AN_I\IAPC\demo)
+2026-11-03 17:38:00 [main] INFO  traceId= spanId= com.example.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-03 17:38:01 [main] INFO  traceId= spanId= o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-11-03 17:38:01 [main] INFO  traceId= spanId= o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2026-11-03 17:38:01 [main] INFO  traceId= spanId= o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-03 17:38:01 [main] INFO  traceId= spanId= o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-11-03 17:38:01 [main] INFO  traceId= spanId= o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 817 ms
+2026-11-03 17:38:01 [main] INFO  traceId= spanId= c.e.d.r.c.SimpleRagConfiguration - Building vector store and saving to: C:\MASTER\AN_I\IAPC\demo\src\main\resources\rag\mini-employee-handbook\vector-store\vectorstore.json
+2026-11-03 17:38:01 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:38:01 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:38:01 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:38:01 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:38:01 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:38:02 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = cdecfb50-ebf9-4e27-8e56-91a18f972f91
+2026-11-03 17:38:02 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = fd7f41f6-608a-4184-98fa-ac45aaca4251
+2026-11-03 17:38:02 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = f3f097a1-e6ed-40e0-ab03-0bb6ca7d4f4e
+2026-11-03 17:38:02 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = 5f876a31-ddb3-44f1-9992-dd7713dae5c5
+2026-11-03 17:38:02 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = dd506138-fd55-4fe5-86fe-b69bd9aadaca
+2026-11-03 17:38:02 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = 64ce479b-e404-4d2b-bf04-741f50b4944f
+2026-11-03 17:38:02 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = c761b085-f48c-4a58-b6ce-31946a61d64b
+2026-11-03 17:38:02 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = 71d5c7f3-317d-49ff-b2f9-fdf4be782086
+2026-11-03 17:38:02 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = b37fa245-fb17-4a17-84a0-c4877cb3b701
+2026-11-03 17:38:02 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = 5dedc792-1893-43ee-a962-26273385afca
+2026-11-03 17:38:02 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Overwriting existing vector store file: src\main\resources\rag\mini-employee-handbook\vector-store\vectorstore.json
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.v.pgvector.PgVectorStore - Using the vector table name: rag_vector_store. Is empty: false
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.v.pgvector.PgVectorStore - Initializing PGVectorStore schema for table: rag_vector_store in schema: public
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.v.pgvector.PgVectorStore - vectorTableValidationsEnabled false
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1aa4b96a
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= c.e.d.r.c.s.RagIngestionService - force-rebuild=true -> truncating rag_vector_store
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 1
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 2
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 3
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 4
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 5
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processed 5 selected pages of 5 total
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 1
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 2
+2026-11-03 17:38:03 [main] WARN  traceId= spanId= o.a.p.contentstream.PDFStreamEngine - Cannot execute restore, the graphics stack is empty
+org.apache.pdfbox.contentstream.operator.state.EmptyGraphicsStackException: Cannot execute restore, the graphics stack is empty
+	at org.apache.pdfbox.contentstream.operator.state.Restore.process(Restore.java:51)
+	at org.apache.pdfbox.contentstream.PDFStreamEngine.processOperator(PDFStreamEngine.java:931)
+	at org.apache.pdfbox.contentstream.PDFStreamEngine.processStreamOperators(PDFStreamEngine.java:564)
+	at org.apache.pdfbox.contentstream.PDFStreamEngine.processStream(PDFStreamEngine.java:522)
+	at org.apache.pdfbox.contentstream.PDFStreamEngine.processPage(PDFStreamEngine.java:158)
+	at org.apache.pdfbox.text.LegacyPDFStreamEngine.processPage(LegacyPDFStreamEngine.java:153)
+	at org.apache.pdfbox.text.PDFTextStripper.processPage(PDFTextStripper.java:379)
+	at org.springframework.ai.reader.pdf.layout.ForkPDFLayoutTextStripper.processPage(ForkPDFLayoutTextStripper.java:70)
+	at org.springframework.ai.reader.pdf.layout.PDFLayoutTextStripperByArea.extractRegions(PDFLayoutTextStripperByArea.java:126)
+	at org.springframework.ai.reader.pdf.PagePdfDocumentReader.handleSinglePage(PagePdfDocumentReader.java:182)
+	at org.springframework.ai.reader.pdf.PagePdfDocumentReader.get(PagePdfDocumentReader.java:146)
+	at org.springframework.ai.reader.pdf.PagePdfDocumentReader.get(PagePdfDocumentReader.java:50)
+	at org.springframework.ai.document.DocumentReader.read(DocumentReader.java:25)
+	at com.example.demo.rag.config.service.RagIngestionService.getDocumentParts(RagIngestionService.java:165)
+	at com.example.demo.rag.config.service.RagIngestionService.getDocuments(RagIngestionService.java:152)
+	at com.example.demo.rag.config.service.RagIngestionService.ingestDocumentChunksToVectorStore(RagIngestionService.java:142)
+	at com.example.demo.rag.config.service.RagIngestionService.initializePgVectorStore(RagIngestionService.java:82)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:453)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:397)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:217)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:426)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1807)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1658)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1380)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1225)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1191)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:994)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.example.demo.DemoApplication.main(DemoApplication.java:10)
+2026-11-03 17:38:03 [main] WARN  traceId= spanId= o.a.p.contentstream.PDFStreamEngine - Cannot execute restore, the graphics stack is empty
+org.apache.pdfbox.contentstream.operator.state.EmptyGraphicsStackException: Cannot execute restore, the graphics stack is empty
+	at org.apache.pdfbox.contentstream.operator.state.Restore.process(Restore.java:51)
+	at org.apache.pdfbox.contentstream.PDFStreamEngine.processOperator(PDFStreamEngine.java:931)
+	at org.apache.pdfbox.contentstream.PDFStreamEngine.processStreamOperators(PDFStreamEngine.java:564)
+	at org.apache.pdfbox.contentstream.PDFStreamEngine.processStream(PDFStreamEngine.java:522)
+	at org.apache.pdfbox.contentstream.PDFStreamEngine.processPage(PDFStreamEngine.java:158)
+	at org.apache.pdfbox.text.LegacyPDFStreamEngine.processPage(LegacyPDFStreamEngine.java:153)
+	at org.apache.pdfbox.text.PDFTextStripper.processPage(PDFTextStripper.java:379)
+	at org.springframework.ai.reader.pdf.layout.ForkPDFLayoutTextStripper.processPage(ForkPDFLayoutTextStripper.java:70)
+	at org.springframework.ai.reader.pdf.layout.PDFLayoutTextStripperByArea.extractRegions(PDFLayoutTextStripperByArea.java:126)
+	at org.springframework.ai.reader.pdf.PagePdfDocumentReader.handleSinglePage(PagePdfDocumentReader.java:182)
+	at org.springframework.ai.reader.pdf.PagePdfDocumentReader.get(PagePdfDocumentReader.java:146)
+	at org.springframework.ai.reader.pdf.PagePdfDocumentReader.get(PagePdfDocumentReader.java:50)
+	at org.springframework.ai.document.DocumentReader.read(DocumentReader.java:25)
+	at com.example.demo.rag.config.service.RagIngestionService.getDocumentParts(RagIngestionService.java:165)
+	at com.example.demo.rag.config.service.RagIngestionService.getDocuments(RagIngestionService.java:152)
+	at com.example.demo.rag.config.service.RagIngestionService.ingestDocumentChunksToVectorStore(RagIngestionService.java:142)
+	at com.example.demo.rag.config.service.RagIngestionService.initializePgVectorStore(RagIngestionService.java:82)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:453)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:397)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:217)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:426)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1807)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1658)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1380)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1225)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1191)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:994)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.example.demo.DemoApplication.main(DemoApplication.java:10)
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 3
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 4
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processed 4 selected pages of 4 total
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 1
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 2
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 3
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 4
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processed 4 selected pages of 4 total
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 1
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 2
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 3
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 4
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 5
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 6
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 7
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 8
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processed 8 selected pages of 8 total
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 1
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 2
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 3
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 4
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 5
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 6
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 7
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processed 7 selected pages of 7 total
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 1
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 2
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 3
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 4
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processed 4 selected pages of 4 total
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 3 chunks.
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 4 chunks.
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 3 chunks.
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 3 chunks.
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 3 chunks.
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 4 chunks.
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 3 chunks.
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 3 chunks.
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 3 chunks.
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 3 chunks.
+2026-11-03 17:38:03 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:38:08 [main] INFO  traceId= spanId= c.e.d.r.c.s.RagIngestionService - Ingested 68 chunks into PgVector
+2026-11-03 17:38:08 [main] INFO  traceId= spanId= o.s.a.v.pgvector.PgVectorStore - Using the vector table name: vector_store. Is empty: false
+2026-11-03 17:38:08 [main] INFO  traceId= spanId= o.s.a.v.pgvector.PgVectorStore - Initializing PGVectorStore schema for table: vector_store in schema: public
+2026-11-03 17:38:08 [main] INFO  traceId= spanId= o.s.a.v.pgvector.PgVectorStore - vectorTableValidationsEnabled false
+2026-11-03 17:38:08 [main] INFO  traceId= spanId= o.s.a.v.pgvector.PgVectorStore - Using the vector table name: vector_store. Is empty: false
+2026-11-03 17:38:08 [main] INFO  traceId= spanId= o.s.a.v.pgvector.PgVectorStore - Initializing PGVectorStore schema for table: vector_store in schema: public
+2026-11-03 17:38:08 [main] INFO  traceId= spanId= o.s.a.v.pgvector.PgVectorStore - vectorTableValidationsEnabled false
+2026-11-03 17:38:08 [main] INFO  traceId= spanId= o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2026-11-03 17:38:08 [main] INFO  traceId= spanId= o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2026-11-03 17:38:08 [main] INFO  traceId= spanId= com.example.demo.DemoApplication - Started DemoApplication in 9.194 seconds (process running for 9.93)
+2026-11-03 17:41:20 [http-nio-8081-exec-2] INFO  traceId= spanId= o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-03 17:41:20 [http-nio-8081-exec-2] INFO  traceId= spanId= o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-11-03 17:41:20 [http-nio-8081-exec-2] INFO  traceId= spanId= o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2026-11-03 17:41:35 [http-nio-8081-exec-5] WARN  traceId= spanId= o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public java.lang.String com.example.demo.rag.config.controller.InternalQAController.getInformationFromInternalDocs(java.lang.String,java.lang.String)]
+2026-11-03 17:49:11 [SpringApplicationShutdownHook] INFO  traceId= spanId= o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-11-03 17:49:11 [tomcat-shutdown] INFO  traceId= spanId= o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-11-03 17:49:11 [SpringApplicationShutdownHook] INFO  traceId= spanId= com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-11-03 17:49:11 [SpringApplicationShutdownHook] INFO  traceId= spanId= com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-11-03 17:49:15 [main] INFO  traceId= spanId= com.example.demo.DemoApplication - Starting DemoApplication using Java 25.0.4.1 with PID 14944 (C:\MASTER\AN_I\IAPC\demo\target\classes started by Adriana in C:\MASTER\AN_I\IAPC\demo)
+2026-11-03 17:49:15 [main] INFO  traceId= spanId= com.example.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-03 17:49:16 [main] INFO  traceId= spanId= o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8081 (http)
+2026-11-03 17:49:16 [main] INFO  traceId= spanId= o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2026-11-03 17:49:16 [main] INFO  traceId= spanId= o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-03 17:49:16 [main] INFO  traceId= spanId= o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-11-03 17:49:16 [main] INFO  traceId= spanId= o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 822 ms
+2026-11-03 17:49:16 [main] INFO  traceId= spanId= c.e.d.r.c.SimpleRagConfiguration - Building vector store and saving to: C:\MASTER\AN_I\IAPC\demo\src\main\resources\rag\mini-employee-handbook\vector-store\vectorstore.json
+2026-11-03 17:49:16 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:49:16 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:49:16 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:49:16 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:49:16 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:49:17 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = 0917ba86-d67c-4e36-9e00-9d7500876e10
+2026-11-03 17:49:17 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = 4b7b5b1a-91d7-4e57-b290-76542af89a6a
+2026-11-03 17:49:17 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = 8a4cd544-c87e-4194-b7f6-ff9f656c98f6
+2026-11-03 17:49:17 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = 709a2917-09bc-4b27-9fb3-934f5f289d23
+2026-11-03 17:49:17 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = 8e602380-9baf-464d-925d-39036c67999b
+2026-11-03 17:49:17 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = db2157a2-3bbb-487d-b39f-f8f81df1ac3d
+2026-11-03 17:49:17 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = 80d5970c-e9eb-4c75-ac32-c1f0bb1f1fa7
+2026-11-03 17:49:17 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = e00e02b3-3fe2-4454-9e2b-0667e93bbae6
+2026-11-03 17:49:17 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = b7e33b37-fec4-4e11-8f07-2c0cd284100c
+2026-11-03 17:49:17 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Calling EmbeddingModel for document id = 289529e9-cd2c-4e19-a4cf-5fdb1f9ba13a
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.ai.vectorstore.SimpleVectorStore - Overwriting existing vector store file: src\main\resources\rag\mini-employee-handbook\vector-store\vectorstore.json
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.v.pgvector.PgVectorStore - Using the vector table name: rag_vector_store. Is empty: false
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.v.pgvector.PgVectorStore - Initializing PGVectorStore schema for table: rag_vector_store in schema: public
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.v.pgvector.PgVectorStore - vectorTableValidationsEnabled false
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@72977b91
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= c.e.d.r.c.s.RagIngestionService - force-rebuild=true -> truncating rag_vector_store
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 1
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 2
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 3
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 4
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 5
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processed 5 selected pages of 5 total
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 1
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 2
+2026-11-03 17:49:18 [main] WARN  traceId= spanId= o.a.p.contentstream.PDFStreamEngine - Cannot execute restore, the graphics stack is empty
+org.apache.pdfbox.contentstream.operator.state.EmptyGraphicsStackException: Cannot execute restore, the graphics stack is empty
+	at org.apache.pdfbox.contentstream.operator.state.Restore.process(Restore.java:51)
+	at org.apache.pdfbox.contentstream.PDFStreamEngine.processOperator(PDFStreamEngine.java:931)
+	at org.apache.pdfbox.contentstream.PDFStreamEngine.processStreamOperators(PDFStreamEngine.java:564)
+	at org.apache.pdfbox.contentstream.PDFStreamEngine.processStream(PDFStreamEngine.java:522)
+	at org.apache.pdfbox.contentstream.PDFStreamEngine.processPage(PDFStreamEngine.java:158)
+	at org.apache.pdfbox.text.LegacyPDFStreamEngine.processPage(LegacyPDFStreamEngine.java:153)
+	at org.apache.pdfbox.text.PDFTextStripper.processPage(PDFTextStripper.java:379)
+	at org.springframework.ai.reader.pdf.layout.ForkPDFLayoutTextStripper.processPage(ForkPDFLayoutTextStripper.java:70)
+	at org.springframework.ai.reader.pdf.layout.PDFLayoutTextStripperByArea.extractRegions(PDFLayoutTextStripperByArea.java:126)
+	at org.springframework.ai.reader.pdf.PagePdfDocumentReader.handleSinglePage(PagePdfDocumentReader.java:182)
+	at org.springframework.ai.reader.pdf.PagePdfDocumentReader.get(PagePdfDocumentReader.java:146)
+	at org.springframework.ai.reader.pdf.PagePdfDocumentReader.get(PagePdfDocumentReader.java:50)
+	at org.springframework.ai.document.DocumentReader.read(DocumentReader.java:25)
+	at com.example.demo.rag.config.service.RagIngestionService.getDocumentParts(RagIngestionService.java:165)
+	at com.example.demo.rag.config.service.RagIngestionService.getDocuments(RagIngestionService.java:152)
+	at com.example.demo.rag.config.service.RagIngestionService.ingestDocumentChunksToVectorStore(RagIngestionService.java:142)
+	at com.example.demo.rag.config.service.RagIngestionService.initializePgVectorStore(RagIngestionService.java:82)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:453)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:397)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:217)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:426)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1807)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1658)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1380)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1225)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1191)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:994)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.example.demo.DemoApplication.main(DemoApplication.java:10)
+2026-11-03 17:49:18 [main] WARN  traceId= spanId= o.a.p.contentstream.PDFStreamEngine - Cannot execute restore, the graphics stack is empty
+org.apache.pdfbox.contentstream.operator.state.EmptyGraphicsStackException: Cannot execute restore, the graphics stack is empty
+	at org.apache.pdfbox.contentstream.operator.state.Restore.process(Restore.java:51)
+	at org.apache.pdfbox.contentstream.PDFStreamEngine.processOperator(PDFStreamEngine.java:931)
+	at org.apache.pdfbox.contentstream.PDFStreamEngine.processStreamOperators(PDFStreamEngine.java:564)
+	at org.apache.pdfbox.contentstream.PDFStreamEngine.processStream(PDFStreamEngine.java:522)
+	at org.apache.pdfbox.contentstream.PDFStreamEngine.processPage(PDFStreamEngine.java:158)
+	at org.apache.pdfbox.text.LegacyPDFStreamEngine.processPage(LegacyPDFStreamEngine.java:153)
+	at org.apache.pdfbox.text.PDFTextStripper.processPage(PDFTextStripper.java:379)
+	at org.springframework.ai.reader.pdf.layout.ForkPDFLayoutTextStripper.processPage(ForkPDFLayoutTextStripper.java:70)
+	at org.springframework.ai.reader.pdf.layout.PDFLayoutTextStripperByArea.extractRegions(PDFLayoutTextStripperByArea.java:126)
+	at org.springframework.ai.reader.pdf.PagePdfDocumentReader.handleSinglePage(PagePdfDocumentReader.java:182)
+	at org.springframework.ai.reader.pdf.PagePdfDocumentReader.get(PagePdfDocumentReader.java:146)
+	at org.springframework.ai.reader.pdf.PagePdfDocumentReader.get(PagePdfDocumentReader.java:50)
+	at org.springframework.ai.document.DocumentReader.read(DocumentReader.java:25)
+	at com.example.demo.rag.config.service.RagIngestionService.getDocumentParts(RagIngestionService.java:165)
+	at com.example.demo.rag.config.service.RagIngestionService.getDocuments(RagIngestionService.java:152)
+	at com.example.demo.rag.config.service.RagIngestionService.ingestDocumentChunksToVectorStore(RagIngestionService.java:142)
+	at com.example.demo.rag.config.service.RagIngestionService.initializePgVectorStore(RagIngestionService.java:82)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:453)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:397)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:217)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:426)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1807)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1658)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1380)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1225)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1191)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:994)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.example.demo.DemoApplication.main(DemoApplication.java:10)
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 3
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 4
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processed 4 selected pages of 4 total
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 1
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 2
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 3
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 4
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processed 4 selected pages of 4 total
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 1
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 2
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 3
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 4
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 5
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 6
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 7
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 8
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processed 8 selected pages of 8 total
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 1
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 2
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 3
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 4
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 5
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 6
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 7
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processed 7 selected pages of 7 total
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 1
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 2
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 3
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processing PDF page: 4
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.r.pdf.PagePdfDocumentReader - Processed 4 selected pages of 4 total
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 3 chunks.
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 4 chunks.
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 3 chunks.
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 3 chunks.
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 3 chunks.
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 4 chunks.
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 3 chunks.
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 3 chunks.
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 3 chunks.
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 3 chunks.
+2026-11-03 17:49:18 [main] INFO  traceId= spanId= o.s.a.t.splitter.TextSplitter - Splitting up document into 2 chunks.
+2026-11-03 17:49:23 [main] INFO  traceId= spanId= c.e.d.r.c.s.RagIngestionService - Ingested 68 chunks into PgVector
+2026-11-03 17:49:24 [main] INFO  traceId= spanId= o.s.a.v.pgvector.PgVectorStore - Using the vector table name: vector_store. Is empty: false
+2026-11-03 17:49:24 [main] INFO  traceId= spanId= o.s.a.v.pgvector.PgVectorStore - Initializing PGVectorStore schema for table: vector_store in schema: public
+2026-11-03 17:49:24 [main] INFO  traceId= spanId= o.s.a.v.pgvector.PgVectorStore - vectorTableValidationsEnabled false
+2026-11-03 17:49:24 [main] INFO  traceId= spanId= o.s.a.v.pgvector.PgVectorStore - Using the vector table name: vector_store. Is empty: false
+2026-11-03 17:49:24 [main] INFO  traceId= spanId= o.s.a.v.pgvector.PgVectorStore - Initializing PGVectorStore schema for table: vector_store in schema: public
+2026-11-03 17:49:24 [main] INFO  traceId= spanId= o.s.a.v.pgvector.PgVectorStore - vectorTableValidationsEnabled false
+2026-11-03 17:49:24 [main] INFO  traceId= spanId= o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2026-11-03 17:49:24 [main] INFO  traceId= spanId= o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8081 (http) with context path '/'
+2026-11-03 17:49:24 [main] INFO  traceId= spanId= com.example.demo.DemoApplication - Started DemoApplication in 10.135 seconds (process running for 11.017)
+2026-11-03 17:49:36 [http-nio-8081-exec-2] INFO  traceId= spanId= o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-03 17:49:36 [http-nio-8081-exec-2] INFO  traceId= spanId= o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-11-03 17:49:36 [http-nio-8081-exec-2] INFO  traceId= spanId= o.s.web.servlet.DispatcherServlet - Completed initialization in 8 ms
+2026-11-03 17:55:00 [SpringApplicationShutdownHook] INFO  traceId= spanId= o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-11-03 17:55:01 [tomcat-shutdown] INFO  traceId= spanId= o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-11-03 17:55:01 [SpringApplicationShutdownHook] INFO  traceId= spanId= com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-11-03 17:55:01 [SpringApplicationShutdownHook] INFO  traceId= spanId= com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
