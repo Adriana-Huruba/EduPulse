@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Secrets (copy .env.example to .env; never commit .env) ###
+.env

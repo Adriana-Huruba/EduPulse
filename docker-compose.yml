@@ -1,0 +1,139 @@
+name: edupulse
+
+# Shared pieces -------------------------------------------------------------
+
+x-java-service: &java-service
+  restart: unless-stopped
+  healthcheck:
+    # SERVER_PORT is set in each service's environment
+    test: ["CMD-SHELL", "curl -fs http://localhost:$${SERVER_PORT}/actuator/health || exit 1"]
+    interval: 10s
+    timeout: 5s
+    retries: 12
+    start_period: 40s
+
+x-db-env: &db-env
+  POSTGRES_HOST: pgvector
+  POSTGRES_PORT: "5432"
+  POSTGRES_DB: ${POSTGRES_DB:-edupulse}
+  POSTGRES_USER: ${POSTGRES_USER:-edupulse}
+  POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+
+x-ai-env: &ai-env
+  LLM_API_KEY: ${LLM_API_KEY:?Set LLM_API_KEY in .env}
+  APP_EMBEDDING_MODEL: ${APP_EMBEDDING_MODEL:-text-embedding-3-small}
+  EMBEDDING_DIMENSIONS: ${EMBEDDING_DIMENSIONS:-1536}
+
+x-eureka-env: &eureka-env
+  EUREKA_URI: http://eureka-server:8761/eureka
+
+# Services ------------------------------------------------------------------
+
+services:
+  pgvector:
+    image: pgvector/pgvector:pg17
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-edupulse}
+      POSTGRES_USER: ${POSTGRES_USER:-edupulse}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      # Localhost only. Change POSTGRES_HOST_PORT if 5432 is already in use.
+      - "127.0.0.1:${POSTGRES_HOST_PORT:-5432}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  eureka-server:
+    <<: *java-service
+    build: ./eureka-server
+    environment:
+      SERVER_PORT: "8761"
+    ports:
+      # Localhost only
+      - "127.0.0.1:8761:8761"
+
+  # The only service that creates the vector_store table
+  ingest-static:
+    <<: *java-service
+    build: ./ingest-static
+    depends_on:
+      pgvector:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+    environment:
+      <<: [*db-env, *ai-env, *eureka-env]
+      SERVER_PORT: "8081"
+      APP_CHUNK_SIZE: ${APP_CHUNK_SIZE:-800}
+      APP_CHUNK_OVERLAP: ${APP_CHUNK_OVERLAP:-100}
+    volumes:
+      - ./resources:/resources:ro
+
+  ingest-dynamic:
+    <<: *java-service
+    build: ./ingest-dynamic
+    depends_on:
+      ingest-static:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+    environment:
+      <<: [*db-env, *ai-env, *eureka-env]
+      SERVER_PORT: "8082"
+      VENDOR_WEBHOOK_SECRET: ${VENDOR_WEBHOOK_SECRET:?Set VENDOR_WEBHOOK_SECRET in .env}
+      # SSRF: Compose only passes the setting. The block must be implemented in the code.
+      APP_INGEST_BLOCK_PRIVATE_NETWORKS: ${APP_INGEST_BLOCK_PRIVATE_NETWORKS:-true}
+      APP_INGEST_ALLOWED_DOMAINS: ${APP_INGEST_ALLOWED_DOMAINS:-}
+      APP_INGEST_MAX_BYTES: ${APP_INGEST_MAX_BYTES:-10485760}
+      APP_INGEST_TIMEOUT_SECONDS: ${APP_INGEST_TIMEOUT_SECONDS:-15}
+    volumes:
+      - ./resources:/resources:ro
+
+  retrieval-pre:
+    <<: *java-service
+    build: ./retrieval-pre
+    depends_on:
+      ingest-static:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+    environment:
+      <<: [*db-env, *ai-env, *eureka-env]
+      SERVER_PORT: "8083"
+      APP_QUERY_EXPANSION_VARIANTS: ${APP_QUERY_EXPANSION_VARIANTS:-3}
+
+  retrieval-post:
+    <<: *java-service
+    build: ./retrieval-post
+    depends_on:
+      ingest-static:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+    environment:
+      <<: [*db-env, *ai-env, *eureka-env]
+      SERVER_PORT: "8084"
+      APP_RERANK_TOP_N: ${APP_RERANK_TOP_N:-20}
+      APP_RERANK_TOP_K: ${APP_RERANK_TOP_K:-5}
+      APP_SIMILARITY_THRESHOLD: ${APP_SIMILARITY_THRESHOLD:-0.5}
+
+  # The only public entry point
+  api-gateway:
+    <<: *java-service
+    build: ./api-gateway
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+    environment:
+      <<: *eureka-env
+      SERVER_PORT: "8080"
+    ports:
+      - "8080:8080"
+
+volumes:
+  pgdata:
