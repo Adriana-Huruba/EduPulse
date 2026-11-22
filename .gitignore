@@ -34,3 +34,6 @@ build/
 
 ### Secrets (copy .env.example to .env; never commit .env) ###
 .env
+
+### Claude Code ###
+CLAUDE.md
