@@ -106,9 +106,8 @@ services:
       eureka-server:
         condition: service_healthy
     environment:
-      <<: [*db-env, *ai-env, *eureka-env]
+      <<: [*db-env, *eureka-env]
       SERVER_PORT: "8083"
-      APP_QUERY_EXPANSION_VARIANTS: ${APP_QUERY_EXPANSION_VARIANTS:-3}
 
   retrieval-post:
     <<: *java-service

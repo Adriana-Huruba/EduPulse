@@ -1,0 +1,175 @@
+{
+  "info": {
+    "name": "EduPulse Retrieval Pre",
+    "description": "Requests for metadata filtering and query normalization.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8083"
+    }
+  ],
+  "item": [
+    {
+      "name": "Normalize without filters",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/search?q=Please%2C%20access%20control%3F%3F",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "search"
+          ],
+          "query": [
+            {
+              "key": "q",
+              "value": "Please, access control??"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"Query is normalized\", () => pm.expect(pm.response.json().normalizedQuery).to.eql(\"access control\"));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Combine filters with AND",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/search?q=access%20control&filterMode=AND&filter=version%3Aeq%3A1&filter=page%3Agte%3A2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "search"
+          ],
+          "query": [
+            {
+              "key": "q",
+              "value": "access control"
+            },
+            {
+              "key": "filterMode",
+              "value": "AND"
+            },
+            {
+              "key": "filter",
+              "value": "version:eq:1"
+            },
+            {
+              "key": "filter",
+              "value": "page:gte:2"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"Returned chunks satisfy both conditions\", () => pm.expect(pm.response.json().results.every(r => r.version === 1 && r.page >= 2)).to.eql(true));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Combine filters with OR",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/search?q=access%20control&filterMode=OR&filter=page%3Aeq%3A1&filter=page%3Aeq%3A2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "search"
+          ],
+          "query": [
+            {
+              "key": "q",
+              "value": "access control"
+            },
+            {
+              "key": "filterMode",
+              "value": "OR"
+            },
+            {
+              "key": "filter",
+              "value": "page:eq:1"
+            },
+            {
+              "key": "filter",
+              "value": "page:eq:2"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"Returned chunks satisfy either condition\", () => pm.expect(pm.response.json().results.every(r => [1, 2].includes(r.page))).to.eql(true));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reject unknown metadata field",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/search?q=access%20control&filter=unknown%3Aeq%3Avalue",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "search"
+          ],
+          "query": [
+            {
+              "key": "q",
+              "value": "access control"
+            },
+            {
+              "key": "filter",
+              "value": "unknown:eq:value"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 400\", () => pm.response.to.have.status(400));",
+              "pm.test(\"Response lists valid fields\", () => pm.expect(pm.response.json().validFields).to.include(\"doc_id\"));"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
