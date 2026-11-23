@@ -20,9 +20,9 @@ x-db-env: &db-env
   POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
 
 x-ai-env: &ai-env
-  LLM_API_KEY: ${LLM_API_KEY:?Set LLM_API_KEY in .env}
-  APP_EMBEDDING_MODEL: ${APP_EMBEDDING_MODEL:-text-embedding-3-small}
-  EMBEDDING_DIMENSIONS: ${EMBEDDING_DIMENSIONS:-1536}
+  OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+  APP_EMBEDDING_MODEL: ${APP_EMBEDDING_MODEL:-nomic-embed-text}
+  EMBEDDING_DIMENSIONS: ${EMBEDDING_DIMENSIONS:-768}
 
 x-eureka-env: &eureka-env
   EUREKA_URI: http://eureka-server:8761/eureka

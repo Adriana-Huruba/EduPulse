@@ -60,7 +60,7 @@ These differ slightly from the versions named in the assignment PDF (Boot 4.0.7,
 
 ## Configuration
 
-Copy `.env.example` to `.env` and fill in the three required values. `.env` is git-ignored: **never commit real secrets.**
+Copy `.env.example` to `.env` and fill in the two required values. `.env` is git-ignored: **never commit real secrets.**
 
 ```powershell
 Copy-Item .env.example .env
@@ -69,17 +69,19 @@ Copy-Item .env.example .env
 | Variable | Required | Default | Used by |
 |---|---|---|---|
 | `POSTGRES_PASSWORD` | **yes** | none | all four services, pgvector |
-| `LLM_API_KEY` | **yes** | none | all four services |
 | `VENDOR_WEBHOOK_SECRET` | **yes** | none | `ingest-dynamic` |
 | `POSTGRES_DB` | no | `edupulse` | services, pgvector |
 | `POSTGRES_USER` | no | `edupulse` | services, pgvector |
 | `POSTGRES_HOST_PORT` | no | `5432` | host port for Postgres (use `5433` if 5432 is taken) |
-| `APP_EMBEDDING_MODEL` | no | `text-embedding-3-small` | all four services |
-| `EMBEDDING_DIMENSIONS` | no | `1536` | all four services |
+| `OLLAMA_BASE_URL` | no | `http://host.docker.internal:11434` (Compose), `http://localhost:11434` (local) | all four services |
+| `APP_EMBEDDING_MODEL` | no | `nomic-embed-text` | all four services |
+| `EMBEDDING_DIMENSIONS` | no | `768` | all four services |
 
-Docker Compose **refuses to start** if any of the three required values is empty.
+Docker Compose **refuses to start** if either required value is empty.
 
-`EMBEDDING_DIMENSIONS` must match the embedding model (1536 for `text-embedding-3-small`). Changing the model later means re-indexing.
+Embeddings come from [Ollama](https://ollama.com), which must be running on the host with the model pulled (`ollama pull nomic-embed-text`). Containers reach it through `host.docker.internal`. If they get connection refused, set `OLLAMA_HOST=0.0.0.0` in the Windows environment and restart Ollama.
+
+`EMBEDDING_DIMENSIONS` must match the embedding model (768 for `nomic-embed-text`, 1024 for `mxbai-embed-large`). Changing the model later means re-indexing.
 
 ### Placeholder variables (not bound to code yet)
 
@@ -140,7 +142,7 @@ docker run -d --name edupulse-pg -e POSTGRES_USER=edupulse -e POSTGRES_PASSWORD=
 Then set the environment variables for the shell that runs the services, and start them in this order: `eureka-server`, `ingest-static`, then the rest.
 
 ```powershell
-$env:POSTGRES_PASSWORD = "<password>"; $env:POSTGRES_PORT = "5433"; $env:LLM_API_KEY = "<key>"
+$env:POSTGRES_PASSWORD = "<password>"; $env:POSTGRES_PORT = "5433"
 cd eureka-server; .\mvnw spring-boot:run
 ```
 
@@ -148,7 +150,7 @@ Without Compose, the services default to `localhost` for the database and for Eu
 
 ### Tests
 
-The generated `contextLoads` tests start the full Spring context, so they need a reachable Postgres and `POSTGRES_PASSWORD` and `LLM_API_KEY` set. Without them `mvnw package` fails. Use `-DskipTests` to build without a database. The Dockerfiles skip tests for the same reason.
+The generated `contextLoads` tests start the full Spring context, so they need a reachable Postgres and `POSTGRES_PASSWORD` set and Ollama reachable. Without them `mvnw package` fails. Use `-DskipTests` to build without a database. The Dockerfiles skip tests for the same reason.
 
 ---
 
@@ -181,7 +183,7 @@ Legend: **Done** / **Skeleton** (the module exists and runs but has no feature c
 
 ### Story 1: Static ingestion resources (`ingest-static`, port 8081)
 
-**Present now:** the Spring Boot module with the PDF reader, OpenAI embedding model and pgvector store dependencies; Eureka registration; datasource and embedding configuration; and the `vector_store` table, which this service creates on first start (`vector(1536)` embedding column with an HNSW cosine index).
+**Present now:** the Spring Boot module with the PDF reader, Ollama embedding model and pgvector store dependencies; Eureka registration; datasource and embedding configuration; and the `vector_store` table, which this service creates on first start (`vector(768)` embedding column with an HNSW cosine index).
 
 | Task | Status |
 |---|---|
@@ -240,7 +242,7 @@ What has actually been checked on this baseline:
 
 What has **not** been checked:
 
-- No real OpenAI call has been made (only dummy keys were used), so embeddings are untested.
+- No real Ollama call has been made, so embeddings are untested.
 - No ingestion, retrieval or webhook flow exists yet, so none of them have been exercised.
 
 ---
@@ -251,7 +253,7 @@ What has **not** been checked:
 - **Gateway startup delay:** about 30 seconds before newly registered services are routable.
 - **`APP_*` placeholders** are not bound to any properties yet (see above).
 - **Vector dimensions:** the table is created with the dimension from `EMBEDDING_DIMENSIONS` at first start. Changing the embedding model afterwards means re-indexing, and the existing table must be recreated.
-- **Spring AI 2.0 / Boot 4 names:** starter and property names were checked against the real 2.0.1 jars, but Spring AI 2.0 changed some provider options, so the `spring.ai.openai.*` properties may need small adjustments when real calls are added.
+- **Spring AI 2.0 / Boot 4 names:** starter and property names were checked against the real 2.0.1 jars, but Spring AI 2.0 changed some provider options, so the `spring.ai.ollama.*` properties may need small adjustments when real calls are added.
 
 ---
 
