@@ -83,17 +83,17 @@ Embeddings come from [Ollama](https://ollama.com), which must be running on the 
 
 `EMBEDDING_DIMENSIONS` must match the embedding model (768 for `nomic-embed-text`, 1024 for `mxbai-embed-large`). Changing the model later means re-indexing.
 
-### Placeholder variables (not bound to code yet)
+### Placeholder variables
 
-These are passed to the containers, but **no code reads them yet**. Map them to your own properties when you implement the stories (for example `app.chunk-size=${APP_CHUNK_SIZE}`).
+The `ingest-dynamic` variables below are bound to `IngestProperties` (`app.ingest.*`), but the allowlist, private-network block, size and timeout are only enforced in Story 2, Task 4. For the other services, **no code reads the variables yet**. Map them to your own properties when you implement the stories (for example `app.chunk-size=${APP_CHUNK_SIZE}`).
 
 | Variable | Default | Service |
 |---|---|---|
-| `APP_CHUNK_SIZE`, `APP_CHUNK_OVERLAP` | 800, 100 | `ingest-static` |
-| `APP_INGEST_BLOCK_PRIVATE_NETWORKS` | `true` | `ingest-dynamic` |
-| `APP_INGEST_ALLOWED_DOMAINS` | empty | `ingest-dynamic` |
-| `APP_INGEST_MAX_BYTES` | 10485760 | `ingest-dynamic` |
-| `APP_INGEST_TIMEOUT_SECONDS` | 15 | `ingest-dynamic` |
+| `APP_CHUNK_SIZE`, `APP_CHUNK_OVERLAP` | 800, 100 | `ingest-static` (not bound yet), `ingest-dynamic` (bound) |
+| `APP_INGEST_BLOCK_PRIVATE_NETWORKS` | `true` | `ingest-dynamic` (bound, not enforced until Task 4) |
+| `APP_INGEST_ALLOWED_DOMAINS` | empty | `ingest-dynamic` (bound, not enforced until Task 4) |
+| `APP_INGEST_MAX_BYTES` | 10485760 | `ingest-dynamic` (bound, not enforced until Task 4) |
+| `APP_INGEST_TIMEOUT_SECONDS` | 15 | `ingest-dynamic` (bound, not enforced until Task 4) |
 | `APP_QUERY_EXPANSION_VARIANTS` | 3 | `retrieval-pre` |
 | `APP_RERANK_TOP_N`, `APP_RERANK_TOP_K` | 20, 5 | `retrieval-post` |
 | `APP_SIMILARITY_THRESHOLD` | 0.5 | `retrieval-post` |
@@ -194,11 +194,67 @@ Legend: **Done** / **Skeleton** (the module exists and runs but has no feature c
 
 ### Story 2: Dynamic ingestion resources (`ingest-dynamic`, port 8082)
 
-**Present now:** the Spring Boot module with the PDF and jsoup (HTML) readers, embedding and pgvector dependencies; Eureka registration; datasource and embedding configuration. It does **not** create the vector table. The `VENDOR_WEBHOOK_SECRET` variable is wired in through Compose but nothing reads it yet.
+**Present now:** internet ingestion (Task 1, below), plus Eureka registration and datasource and embedding configuration. It does **not** create the vector table. The `VENDOR_WEBHOOK_SECRET` variable is wired in through Compose but nothing reads it yet.
+
+#### Task 1: Internet ingestion
+
+`POST /ingest/urls` (through the gateway: `POST http://localhost:8080/ingest-dynamic/ingest/urls`) takes a batch of sources, fetches each one, removes boilerplate, chunks the text, adds metadata and stores the chunks in the vector store.
+
+```powershell
+curl.exe -X POST http://localhost:8080/ingest-dynamic/ingest/urls -H "Content-Type: application/json" -d '{
+  "sources": [
+    { "url": "https://docs.spring.io/spring-ai/reference/index.html" },
+    { "url": "https://example.org/some-paper.pdf" },
+    { "url": "https://github.com/spring-projects/spring-ai", "type": "GITHUB_REPO" }
+  ]
+}'
+```
+
+`type` is optional: `AUTO` (default, decided from the Content-Type, the URL and the file contents), `HTML`, `PDF`, `TEXT` or `GITHUB_REPO`. The answer is always `200` with one result per source, so a failing source never hides the others (a malformed request body is a `400`):
+
+```json
+{ "total": 3, "ok": 2, "partial": 0, "failed": 1,
+  "results": [
+    { "url": "...", "status": "OK", "documents": 1, "chunks": 12, "error": null },
+    { "url": "...", "status": "FAILED", "documents": 0, "chunks": 0, "error": "HTTP 404 from ..." } ] }
+```
+
+`PARTIAL` means some files of a repository failed while others were stored. Each failure is logged with its URL and reason.
+
+How it works:
+
+| Step | Class | Notes |
+|---|---|---|
+| Fetch | `HttpSourceFetcher` | The only place that makes outbound HTTP. Applies the timeout and size limit. Redirects are followed by hand (max 5) so Task 4 can check every hop. |
+| Extract | `HtmlExtractor`, `PdfExtractor`, `PlainTextExtractor` | HTML: picks `<main>`/`<article>`, removes `nav`, `footer`, `aside`, scripts, styles, forms controls, dialogs and elements named like cookie/consent/GDPR banners. PDF: one section per page. |
+| Repository docs | `GitHubRepoResolver` | github.com only. Ingests the top-level `README*` and every `.md`, `.markdown`, `.txt`, `.rst`, `.adoc` file under `docs/`, up to `app.ingest.repo-max-files` (25). Uses the git tree API and `raw.githubusercontent.com`. |
+| Chunk | `TextChunker` | Keeps paragraphs together, splits long ones at whitespace, repeats `APP_CHUNK_OVERLAP` characters at the start of each next chunk. Sizes are in **characters**, not tokens. |
+| Store | `IngestionService` | Calls `VectorStore.add`. Chunk ids are deterministic (hash of `doc_id`, version, `chunk_index`), so ingesting the same URL again overwrites instead of duplicating. |
+
+Metadata on every chunk (the names are in `MetadataKeys` and must stay the same across services):
+
+| Key | Value |
+|---|---|
+| `doc_id` | Stable hash of the normalized URL |
+| `version` | Always `1` until Task 2 |
+| `source` | The URL asked for (for repositories, the GitHub page of the file) |
+| `page` | Page number for PDFs, `1` otherwise |
+| `chunk_index` | 0-based position within the document |
+| `checksum` | SHA-256 of the downloaded bytes |
+| `source_url` | The URL actually fetched, after redirects |
+| `fetch_date` | ISO-8601 time of the download |
+
+Known limits of Task 1:
+- If a page later shrinks, chunks beyond the new last index are **not** removed. Replacing old chunks is Task 2 (versioning).
+- The allowlist, HTTPS-only rule, private-network (SSRF) block and content-type allowlist are **not enforced yet** (Task 4). Until then this endpoint will fetch any URL it is given, so do not expose it publicly.
+- Pages that need JavaScript to render are not supported, and neither are scanned PDFs without a text layer.
+- Request handling is synchronous and one source at a time; keep batches small (at most 50 sources are accepted).
+
+Tests (no database or Ollama needed): `TextChunkerTest`, `HtmlExtractorTest`, `PdfExtractorTest`, `HttpSourceFetcherTest`, `DocIdsTest`, `IngestionServiceTest` (real HTTP against a local stub server and a mocked vector store: web page, remote PDF, GitHub repository, partial failure, a batch with several failing sources, repeat ingestion) and `IngestControllerTest`. The Spring context test needs a database, as for the other services.
 
 | Task | Status |
 |---|---|
-| 1. Internet ingestion (pages, files, third-party repos) with boilerplate cleanup | Not started |
+| 1. Internet ingestion (pages, files, third-party repos) with boilerplate cleanup | Implemented and unit/integration tested. **Not yet run against a real database and real websites.** |
 | 2. Versioning with `version` / `is_latest` metadata, retrieval defaults to latest | Not started |
 | 3. Automation: file watcher and signed vendor webhook receiver with a retry queue | Not started. The watcher and retry-queue libraries are not added yet. |
 | 4. Security: SSRF protection, domain allowlist, size and content-type limits, sanitization | Not started |

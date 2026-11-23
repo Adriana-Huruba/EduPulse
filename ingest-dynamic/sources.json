@@ -1,0 +1,6 @@
+{ "sources": [
+  { "url": "https://docs.spring.io/spring-ai/reference/getting-started.html" },
+  { "url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" },
+  { "url": "https://github.com/psf/requests", "type": "GITHUB_REPO" },
+  { "url": "https://example.org/this-page-does-not-exist" }
+] }
