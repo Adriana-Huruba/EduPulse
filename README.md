@@ -4,7 +4,7 @@ A RAG (retrieval-augmented generation) system split into Spring Boot microservic
 
 **Epic 1: RAG, deadline December 7.** Each story has its own microservice.
 
-> **Current state: project baseline only.** The six services exist, build, start, register with Eureka and are reachable through the gateway. **None of the story features (PDF ingestion, versioning, filtering, reranking, ...) are implemented yet.** See [Story status](#story-status).
+> **Current state:** Story 1, Task 1 (PDF ingestion in `ingest-static`) and Story 2, Task 1 (internet ingestion in `ingest-dynamic`) are implemented with automated tests. All other story tasks are still at baseline. See [Story status](#story-status).
 
 ---
 
@@ -83,13 +83,25 @@ Embeddings come from [Ollama](https://ollama.com), which must be running on the 
 
 `EMBEDDING_DIMENSIONS` must match the embedding model (768 for `nomic-embed-text`, 1024 for `mxbai-embed-large`). Changing the model later means re-indexing.
 
-### Placeholder variables
+### `ingest-static` configuration (Story 1, Task 1)
 
-The `ingest-dynamic` variables below are bound to `IngestProperties` (`app.ingest.*`), but the allowlist, private-network block, size and timeout are only enforced in Story 2, Task 4. For the other services, **no code reads the variables yet**. Map them to your own properties when you implement the stories (for example `app.chunk-size=${APP_CHUNK_SIZE}`).
+Bound via `IngestProperties` (`app.ingest.*`):
+
+| Variable | Property | Default | Description |
+|---|---|---|---|
+| `APP_CHUNK_SIZE` | `app.ingest.chunk-size` | `800` | Maximum chunk length in characters (200–8000, overlap included) |
+| `APP_CHUNK_OVERLAP` | `app.ingest.chunk-overlap` | `100` | Characters overlapped from the previous chunk (0 to half of `chunk-size`) |
+| `APP_PDF_DIR` | `app.ingest.pdf-dir` | `../resources` (local), `/resources` (Compose) | Directory scanned by directory/file ingestion endpoints |
+| `APP_EMBEDDING_MODEL` | `app.ingest.embedding-model` | `nomic-embed-text` | Embedding model name (also sets `spring.ai.ollama.embedding.model`) |
+| `APP_MAX_FILE_SIZE_BYTES` | `app.ingest.max-file-size-bytes` | `52428800` (50 MB) | Maximum PDF file size accepted |
+
+### `ingest-dynamic` and placeholder variables
+
+The `ingest-dynamic` variables below are bound to `IngestProperties` (`app.ingest.*`), but the allowlist, private-network block, size and timeout are only enforced in Story 2, Task 4. For `retrieval-pre` and `retrieval-post`, **no code reads the variables yet**. Map them to your own properties when you implement the remaining stories.
 
 | Variable | Default | Service |
 |---|---|---|
-| `APP_CHUNK_SIZE`, `APP_CHUNK_OVERLAP` | 800, 100 | `ingest-static` (not bound yet), `ingest-dynamic` (bound) |
+| `APP_CHUNK_SIZE`, `APP_CHUNK_OVERLAP` | 800, 100 | `ingest-static` (bound), `ingest-dynamic` (bound) |
 | `APP_INGEST_BLOCK_PRIVATE_NETWORKS` | `true` | `ingest-dynamic` (bound, not enforced until Task 4) |
 | `APP_INGEST_ALLOWED_DOMAINS` | empty | `ingest-dynamic` (bound, not enforced until Task 4) |
 | `APP_INGEST_MAX_BYTES` | 10485760 | `ingest-dynamic` (bound, not enforced until Task 4) |
@@ -183,11 +195,19 @@ Legend: **Done** / **Skeleton** (the module exists and runs but has no feature c
 
 ### Story 1: Static ingestion resources (`ingest-static`, port 8081)
 
-**Present now:** the Spring Boot module with the PDF reader, Ollama embedding model and pgvector store dependencies; Eureka registration; datasource and embedding configuration; and the `vector_store` table, which this service creates on first start (`vector(768)` embedding column with an HNSW cosine index).
+**Present now:** PDF ingestion pipeline (`PdfTextExtractor` with two-column layout detection and table preservation, `TextCleaner` for ligatures/hyphenation/running headers & footers, `StructureAwareChunker` with configurable size/overlap and section tracking, `PdfIngestionService` with stable `doc_id`, SHA-256 checksum idempotency, full metadata schema, and REST endpoints under `/api/v1/ingest/*`). Cybersecurity sample PDFs (ISO 27001 policy, audit controls tables, and two-column Zero-Trust paper) are in `resources/`.
+
+**Endpoints (via gateway `http://localhost:8080/ingest-static`):**
+- `POST /api/v1/ingest/directory` — ingests all PDFs in `app.ingest.pdf-dir`
+- `POST /api/v1/ingest/file?path=<relative-path>` — ingests a single PDF from `app.ingest.pdf-dir`
+- `POST /api/v1/ingest/upload` (`multipart/form-data`, part `file`) — ingests an uploaded PDF
+- `GET /api/v1/ingest/documents/{docId}/chunks` — lists stored chunks for a `doc_id`
+- `GET /api/v1/ingest/chunks/sample?size=20` — returns a random sample of chunks for manual quality inspection
+- `GET /api/v1/ingest/config` — returns active chunking and embedding configuration
 
 | Task | Status |
 |---|---|
-| 1. PDF ingestion: parse, structure-aware chunking with overlap, embed, store with metadata schema and stable `doc_id` | Not started |
+| 1. PDF ingestion: parse, structure-aware chunking with overlap, embed, store with metadata schema and stable `doc_id` | **Done** |
 | 2. Update process: checksum comparison, idempotent re-ingest, atomic replacement of old chunks | Not started |
 | 3. Delete process: remove all chunks by `doc_id`, with a check for orphaned vectors | Not started |
 | 4. Ingestion manifest and re-index support | Not started |

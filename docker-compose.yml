@@ -71,6 +71,7 @@ services:
       SERVER_PORT: "8081"
       APP_CHUNK_SIZE: ${APP_CHUNK_SIZE:-800}
       APP_CHUNK_OVERLAP: ${APP_CHUNK_OVERLAP:-100}
+      APP_PDF_DIR: /resources
     volumes:
       - ./resources:/resources:ro
 
