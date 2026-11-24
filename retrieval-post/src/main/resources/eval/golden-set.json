@@ -1,0 +1,254 @@
+[
+  {
+    "id": "q01",
+    "question": "How quickly must a confirmed personal data breach be reported to the supervisory authority and the DPO?",
+    "expectedChunkIds": ["iso27001-c3"],
+    "expectedSource": "cybersecurity-policy-iso27001.pdf",
+    "answerable": true
+  },
+  {
+    "id": "q02",
+    "question": "What encryption algorithm is required for PostgreSQL data at rest and which TLS version is mandatory in transit?",
+    "expectedChunkIds": ["iso27001-c2"],
+    "expectedSource": "cybersecurity-policy-iso27001.pdf",
+    "answerable": true
+  },
+  {
+    "id": "q03",
+    "question": "What is the minimum password length and MFA requirement for privileged administrative accounts?",
+    "expectedChunkIds": ["iso27001-c1"],
+    "expectedSource": "cybersecurity-policy-iso27001.pdf",
+    "answerable": true
+  },
+  {
+    "id": "q04",
+    "question": "What are the RPO and RTO targets for Tier-1 compliance services?",
+    "expectedChunkIds": ["iso27001-c5"],
+    "expectedSource": "cybersecurity-policy-iso27001.pdf",
+    "answerable": true
+  },
+  {
+    "id": "q05",
+    "question": "How many hours do we have to patch a critical CVSS 9.0 vulnerability on an internet-facing service?",
+    "expectedChunkIds": ["audit-c1"],
+    "expectedSource": "security-controls-audit-tables.pdf",
+    "answerable": true
+  },
+  {
+    "id": "q06",
+    "question": "How long must security and authentication audit logs be retained in the SIEM archive?",
+    "expectedChunkIds": ["audit-c2"],
+    "expectedSource": "security-controls-audit-tables.pdf",
+    "answerable": true
+  },
+  {
+    "id": "q07",
+    "question": "Within how many hours must a terminated employee's SSO and VPN access be revoked?",
+    "expectedChunkIds": ["audit-c3"],
+    "expectedSource": "security-controls-audit-tables.pdf",
+    "answerable": true
+  },
+  {
+    "id": "q08",
+    "question": "How often are webhook HMAC signing secrets rotated and what is the overlap window?",
+    "expectedChunkIds": ["audit-c5"],
+    "expectedSource": "security-controls-audit-tables.pdf",
+    "answerable": true
+  },
+  {
+    "id": "q09",
+    "question": "What approvals are needed before deploying code changes to production?",
+    "expectedChunkIds": ["audit-c4"],
+    "expectedSource": "security-controls-audit-tables.pdf",
+    "answerable": true
+  },
+  {
+    "id": "q10",
+    "question": "How do internal microservices authenticate each other and what is the certificate TTL?",
+    "expectedChunkIds": ["zt-c1"],
+    "expectedSource": "zero-trust-architecture-twocolumn.pdf",
+    "answerable": true
+  },
+  {
+    "id": "q11",
+    "question": "Which network destinations are blocked for outbound requests from ingestion workers?",
+    "expectedChunkIds": ["zt-c2"],
+    "expectedSource": "zero-trust-architecture-twocolumn.pdf",
+    "answerable": true
+  },
+  {
+    "id": "q12",
+    "question": "How does the RAG pipeline guarantee multi-tenant data isolation during vector search?",
+    "expectedChunkIds": ["zt-c4"],
+    "expectedSource": "zero-trust-architecture-twocolumn.pdf",
+    "answerable": true
+  },
+  {
+    "id": "q13",
+    "question": "What is the maximum duration for Just-In-Time elevated production troubleshooting access?",
+    "expectedChunkIds": ["zt-c5"],
+    "expectedSource": "zero-trust-architecture-twocolumn.pdf",
+    "answerable": true
+  },
+  {
+    "id": "q14",
+    "question": "What rate limit and maximum payload size does the API Gateway enforce per tenant?",
+    "expectedChunkIds": ["zt-c6"],
+    "expectedSource": "zero-trust-architecture-twocolumn.pdf",
+    "answerable": true
+  },
+  {
+    "id": "q15",
+    "question": "What certification must a SaaS vendor hold before processing Restricted or Confidential data?",
+    "expectedChunkIds": ["iso27001-c4"],
+    "expectedSource": "cybersecurity-policy-iso27001.pdf",
+    "answerable": true
+  },
+  {
+    "id": "q16",
+    "question": "What physical access controls and CCTV retention period apply to server rooms under Clause A.11?",
+    "expectedChunkIds": ["iso27001-c6"],
+    "expectedSource": "cybersecurity-policy-iso27001.pdf",
+    "answerable": true
+  },
+  {
+    "id": "q17",
+    "question": "What are the four data classification tiers and what rules apply to Restricted data in staging environments?",
+    "expectedChunkIds": ["iso27001-c7"],
+    "expectedSource": "cybersecurity-policy-iso27001.pdf",
+    "answerable": true
+  },
+  {
+    "id": "q18",
+    "question": "What is the purpose of the ISO/IEC 27001 ISMS Policy Overview for EduPulse data?",
+    "expectedChunkIds": ["iso27001-c0"],
+    "expectedSource": "cybersecurity-policy-iso27001.pdf",
+    "answerable": true
+  },
+  {
+    "id": "q19",
+    "question": "How frequently are gray-box penetration tests performed and what accreditation must the testing vendor hold?",
+    "expectedChunkIds": ["audit-c6"],
+    "expectedSource": "security-controls-audit-tables.pdf",
+    "answerable": true
+  },
+  {
+    "id": "q20",
+    "question": "What is the target click rate for quarterly phishing simulations and when must new hires finish security training?",
+    "expectedChunkIds": ["audit-c7"],
+    "expectedSource": "security-controls-audit-tables.pdf",
+    "answerable": true
+  },
+  {
+    "id": "q21",
+    "question": "What does the Security Controls Audit Matrix summarize for external compliance certification?",
+    "expectedChunkIds": ["audit-c0"],
+    "expectedSource": "security-controls-audit-tables.pdf",
+    "answerable": true
+  },
+  {
+    "id": "q22",
+    "question": "What device posture requirements must corporate laptops satisfy before receiving a session token?",
+    "expectedChunkIds": ["zt-c3"],
+    "expectedSource": "zero-trust-architecture-twocolumn.pdf",
+    "answerable": true
+  },
+  {
+    "id": "q23",
+    "question": "How do microservices correlate OpenTelemetry traces and structured JSON logs for forensic investigations?",
+    "expectedChunkIds": ["zt-c7"],
+    "expectedSource": "zero-trust-architecture-twocolumn.pdf",
+    "answerable": true
+  },
+  {
+    "id": "q24",
+    "question": "What is the core guiding principle of Zero-Trust Architecture regarding network perimeter location?",
+    "expectedChunkIds": ["zt-c0"],
+    "expectedSource": "zero-trust-architecture-twocolumn.pdf",
+    "answerable": true
+  },
+  {
+    "id": "u01",
+    "question": "What is the best recipe for sourdough bread with rosemary and olive oil?",
+    "expectedChunkIds": [],
+    "expectedSource": null,
+    "answerable": false
+  },
+  {
+    "id": "u02",
+    "question": "Who won the FIFA World Cup final in 1998 and what was the score?",
+    "expectedChunkIds": [],
+    "expectedSource": null,
+    "answerable": false
+  },
+  {
+    "id": "u03",
+    "question": "What is the average surface temperature of Mars in degrees Celsius?",
+    "expectedChunkIds": [],
+    "expectedSource": null,
+    "answerable": false
+  },
+  {
+    "id": "u04",
+    "question": "How do I prune tomato plants in mid-summer to maximize fruit yield?",
+    "expectedChunkIds": [],
+    "expectedSource": null,
+    "answerable": false
+  },
+  {
+    "id": "u05",
+    "question": "What is the current share price of Apple Inc. on NASDAQ today?",
+    "expectedChunkIds": [],
+    "expectedSource": null,
+    "answerable": false
+  },
+  {
+    "id": "u06",
+    "question": "What menu items are served in the university cafeteria on Fridays?",
+    "expectedChunkIds": [],
+    "expectedSource": null,
+    "answerable": false
+  },
+  {
+    "id": "u07",
+    "question": "What is the CEO's personal home address and private phone number?",
+    "expectedChunkIds": [],
+    "expectedSource": null,
+    "answerable": false
+  },
+  {
+    "id": "u08",
+    "question": "How many moons orbit Jupiter and which one is the largest?",
+    "expectedChunkIds": [],
+    "expectedSource": null,
+    "answerable": false
+  },
+  {
+    "id": "u09",
+    "question": "What is the recommended tire pressure for a 2022 Honda Civic?",
+    "expectedChunkIds": [],
+    "expectedSource": null,
+    "answerable": false
+  },
+  {
+    "id": "u10",
+    "question": "Which chords are used in the chorus of Hotel California on acoustic guitar?",
+    "expectedChunkIds": [],
+    "expectedSource": null,
+    "answerable": false
+  },
+  {
+    "id": "u11",
+    "question": "What is the exact 2027 cybersecurity insurance premium paid by EduPulse in US dollars?",
+    "expectedChunkIds": [],
+    "expectedSource": null,
+    "answerable": false
+  },
+  {
+    "id": "u12",
+    "question": "Which external law firm handles EduPulse patent litigation in California?",
+    "expectedChunkIds": [],
+    "expectedSource": null,
+    "answerable": false
+  }
+]

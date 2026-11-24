@@ -1,0 +1,362 @@
+[
+  {
+    "id": "iso27001-c0",
+    "docId": "doc-iso27001",
+    "version": 1,
+    "source": "cybersecurity-policy-iso27001.pdf",
+    "page": 1,
+    "chunkIndex": 0,
+    "content": "ISO/IEC 27001 Information Security Management System (ISMS) Policy Overview. This policy establishes the governance framework for protecting confidentiality, integrity, and availability of all EduPulse institutional data, student records, and financial audit logs across cloud and on-premise environments."
+  },
+  {
+    "id": "iso27001-c1",
+    "docId": "doc-iso27001",
+    "version": 1,
+    "source": "cybersecurity-policy-iso27001.pdf",
+    "page": 2,
+    "chunkIndex": 1,
+    "content": "Access Control and Password Standards (Clause A.9). All privileged administrative accounts must enforce hardware-backed multi-factor authentication (FIDO2 or WebAuthn). Standard user passwords must be at least 14 characters long, checked against breached-password dictionaries, and rotated immediately upon suspected compromise rather than on an arbitrary 90-day timer."
+  },
+  {
+    "id": "iso27001-c2",
+    "docId": "doc-iso27001",
+    "version": 1,
+    "source": "cybersecurity-policy-iso27001.pdf",
+    "page": 3,
+    "chunkIndex": 2,
+    "content": "Cryptographic Controls (Clause A.10). Sensitive data stored at rest in PostgreSQL databases and object storage must be encrypted using AES-256-GCM with keys managed by an HSM-backed KMS. Data in transit across public and internal microservice networks must use TLS 1.3 with perfect forward secrecy; TLS 1.0 and TLS 1.1 are strictly prohibited."
+  },
+  {
+    "id": "iso27001-c3",
+    "docId": "doc-iso27001",
+    "version": 1,
+    "source": "cybersecurity-policy-iso27001.pdf",
+    "page": 4,
+    "chunkIndex": 3,
+    "content": "Incident Response and Breach Notification (Clause A.16). Any confirmed personal data breach must be reported to the Data Protection Officer within 4 hours of discovery and escalated to the supervisory authority within 72 hours under GDPR Article 33. Severity-1 incidents trigger an immediate containment bridge led by the SOC."
+  },
+  {
+    "id": "iso27001-c4",
+    "docId": "doc-iso27001",
+    "version": 1,
+    "source": "cybersecurity-policy-iso27001.pdf",
+    "page": 5,
+    "chunkIndex": 4,
+    "content": "Supplier and Third-Party Risk Management (Clause A.15). Every SaaS vendor processing Restricted or Confidential data must hold a current SOC 2 Type II or ISO 27001 certificate and undergo an annual security questionnaire review. Sub-processors require written approval 30 days prior to onboarding."
+  },
+  {
+    "id": "iso27001-c5",
+    "docId": "doc-iso27001",
+    "version": 1,
+    "source": "cybersecurity-policy-iso27001.pdf",
+    "page": 6,
+    "chunkIndex": 5,
+    "content": "Business Continuity and Backup Retention (Clause A.17). Production databases undergo continuous point-in-time recovery (PITR) logging and immutable nightly snapshots replicated to a geographically separate region. Recovery Point Objective (RPO) is 15 minutes and Recovery Time Objective (RTO) is 4 hours for Tier-1 compliance services."
+  },
+  {
+    "id": "iso27001-c6",
+    "docId": "doc-iso27001",
+    "version": 1,
+    "source": "cybersecurity-policy-iso27001.pdf",
+    "page": 7,
+    "chunkIndex": 6,
+    "content": "Physical and Environmental Security (Clause A.11). Server rooms require dual-badge plus biometric entry, CCTV retention for 90 days, and visitor escort logs reviewed monthly by Facilities Security."
+  },
+  {
+    "id": "iso27001-c7",
+    "docId": "doc-iso27001",
+    "version": 1,
+    "source": "cybersecurity-policy-iso27001.pdf",
+    "page": 8,
+    "chunkIndex": 7,
+    "content": "Data Classification and Labeling Policy. Information assets are categorized into four tiers: Public, Internal, Confidential, and Restricted. Restricted data includes payment credentials, medical records, and cryptographic private keys, and must never be copied into non-production staging environments."
+  },
+  {
+    "id": "audit-c0",
+    "docId": "doc-audit-tables",
+    "version": 1,
+    "source": "security-controls-audit-tables.pdf",
+    "page": 1,
+    "chunkIndex": 0,
+    "content": "Security Controls Audit Matrix Introduction. This document summarizes quarterly internal audit findings, control owners, remediation SLAs, and evidence artifacts required for external compliance certification."
+  },
+  {
+    "id": "audit-c1",
+    "docId": "doc-audit-tables",
+    "version": 1,
+    "source": "security-controls-audit-tables.pdf",
+    "page": 2,
+    "chunkIndex": 1,
+    "content": "Vulnerability Remediation SLAs. Critical CVSS (>= 9.0) vulnerabilities in internet-facing services must be patched within 24 hours. High severity (7.0-8.9) flaws must be remediated within 7 calendar days, Medium (4.0-6.9) within 30 days, and Low within 90 days."
+  },
+  {
+    "id": "audit-c2",
+    "docId": "doc-audit-tables",
+    "version": 1,
+    "source": "security-controls-audit-tables.pdf",
+    "page": 3,
+    "chunkIndex": 2,
+    "content": "Audit Log Retention and Immutability Controls. Security and authentication audit logs must be shipped in real time to a WORM-protected SIEM archive and retained for a minimum of 7 years for regulatory audits. Log entries must include UTC timestamp, actor ID, source IP, target resource, and action outcome."
+  },
+  {
+    "id": "audit-c3",
+    "docId": "doc-audit-tables",
+    "version": 1,
+    "source": "security-controls-audit-tables.pdf",
+    "page": 4,
+    "chunkIndex": 3,
+    "content": "Access Review Cadence and Offboarding Controls. Privileged IAM roles and database admin memberships are recertified every 90 days by department heads. Terminated employee accounts must be revoked across SSO, VPN, and Git repositories within 2 hours of HR notification."
+  },
+  {
+    "id": "audit-c4",
+    "docId": "doc-audit-tables",
+    "version": 1,
+    "source": "security-controls-audit-tables.pdf",
+    "page": 5,
+    "chunkIndex": 4,
+    "content": "Change Management and Segregation of Duties. Production deployments require at least one peer code review approval from an engineer who did not author the commit, automated CI security scans passing, and an approved change ticket. Developers do not hold standing write access to production databases."
+  },
+  {
+    "id": "audit-c5",
+    "docId": "doc-audit-tables",
+    "version": 1,
+    "source": "security-controls-audit-tables.pdf",
+    "page": 6,
+    "chunkIndex": 5,
+    "content": "Key Rotation Schedule. Symmetric data encryption keys (DEKs) are automatically rotated every 365 days, TLS leaf certificates renew every 90 days via ACME, and webhook HMAC signing secrets are rotated every 180 days with a 24-hour dual-key overlap window."
+  },
+  {
+    "id": "audit-c6",
+    "docId": "doc-audit-tables",
+    "version": 1,
+    "source": "security-controls-audit-tables.pdf",
+    "page": 7,
+    "chunkIndex": 6,
+    "content": "Penetration Testing and Red Team Exercises. An independent CREST-accredited third party performs gray-box penetration testing annually and after any major architectural change. Executive summaries and remediation tracking are presented to the Audit Committee."
+  },
+  {
+    "id": "audit-c7",
+    "docId": "doc-audit-tables",
+    "version": 1,
+    "source": "security-controls-audit-tables.pdf",
+    "page": 8,
+    "chunkIndex": 7,
+    "content": "Compliance Training and Phishing Simulations. All employees must complete annual information security awareness training within 30 days of hire and annually thereafter. Quarterly phishing simulations target a click rate below 3 percent."
+  },
+  {
+    "id": "zt-c0",
+    "docId": "doc-zero-trust",
+    "version": 1,
+    "source": "zero-trust-architecture-twocolumn.pdf",
+    "page": 1,
+    "chunkIndex": 0,
+    "content": "Zero-Trust Architecture (ZTA) Guiding Principles. Never trust, always verify. Network location inside the corporate perimeter does not grant implicit trust; every request must be explicitly authenticated, authorized, and encrypted regardless of origin."
+  },
+  {
+    "id": "zt-c1",
+    "docId": "doc-zero-trust",
+    "version": 1,
+    "source": "zero-trust-architecture-twocolumn.pdf",
+    "page": 2,
+    "chunkIndex": 1,
+    "content": "Service-to-Service Mutual TLS (mTLS) and Workload Identity. Internal microservices authenticate each other using short-lived X.509 SPIFFE certificates issued by the service mesh with a 24-hour TTL. API Gateway validates external JWT access tokens signed with RS256 and forwards scoped claims downstream."
+  },
+  {
+    "id": "zt-c2",
+    "docId": "doc-zero-trust",
+    "version": 1,
+    "source": "zero-trust-architecture-twocolumn.pdf",
+    "page": 3,
+    "chunkIndex": 2,
+    "content": "Micro-Segmentation and Least-Privilege Egress. Each microservice runs in an isolated network policy zone allowing ingress only from the API Gateway. Outbound internet requests from ingestion workers must pass through an egress proxy enforcing HTTPS-only, domain allowlists, and blocking RFC1918 private networks and 169.254.169.254 cloud metadata endpoints."
+  },
+  {
+    "id": "zt-c3",
+    "docId": "doc-zero-trust",
+    "version": 1,
+    "source": "zero-trust-architecture-twocolumn.pdf",
+    "page": 4,
+    "chunkIndex": 3,
+    "content": "Device Posture and Continuous Verification. Corporate laptops must run disk encryption, EDR agents, and OS patches no older than 14 days before receiving a session token. Risk engines continuously evaluate impossible travel, anomalous API call volumes, and token replay."
+  },
+  {
+    "id": "zt-c4",
+    "docId": "doc-zero-trust",
+    "version": 1,
+    "source": "zero-trust-architecture-twocolumn.pdf",
+    "page": 5,
+    "chunkIndex": 4,
+    "content": "Multi-Tenant Data Isolation in RAG Pipelines. Vector search queries must enforce tenant-scoped metadata filters before retrieval so embeddings from one organizational unit are never surfaced in another tenant's context window."
+  },
+  {
+    "id": "zt-c5",
+    "docId": "doc-zero-trust",
+    "version": 1,
+    "source": "zero-trust-architecture-twocolumn.pdf",
+    "page": 6,
+    "chunkIndex": 5,
+    "content": "Just-In-Time (JIT) Privileged Access. Production troubleshooting uses time-bound elevation requests capped at 4 hours with mandatory manager approval and full session recording."
+  },
+  {
+    "id": "zt-c6",
+    "docId": "doc-zero-trust",
+    "version": 1,
+    "source": "zero-trust-architecture-twocolumn.pdf",
+    "page": 7,
+    "chunkIndex": 6,
+    "content": "API Rate Limiting and Abuse Protection. The API Gateway enforces per-tenant token bucket rate limits (100 requests per second burst, 50 sustained) and rejects payloads exceeding 10 MB to protect downstream vector and LLM inference capacity."
+  },
+  {
+    "id": "zt-c7",
+    "docId": "doc-zero-trust",
+    "version": 1,
+    "source": "zero-trust-architecture-twocolumn.pdf",
+    "page": 8,
+    "chunkIndex": 7,
+    "content": "Telemetry and Distributed Tracing. Every microservice emits OpenTelemetry traces and structured JSON logs correlated by W3C traceparent headers so security analysts can reconstruct end-to-end request paths during forensic investigations."
+  },
+  {
+    "id": "distractor-breach-scope",
+    "docId": "doc-iso27001",
+    "version": 1,
+    "source": "cybersecurity-policy-iso27001.pdf",
+    "page": 9,
+    "chunkIndex": 8,
+    "content": "Personal Data Breach Glossary and Committee Charter. The Data Protection Officer (DPO) chairs the quarterly breach readiness committee and maintains contact templates for the supervisory authority. Reporting timelines and escalation SLAs are defined separately in Clause A.16."
+  },
+  {
+    "id": "distractor-crypto-overview",
+    "docId": "doc-iso27001",
+    "version": 1,
+    "source": "cybersecurity-policy-iso27001.pdf",
+    "page": 10,
+    "chunkIndex": 9,
+    "content": "PostgreSQL Encryption and TLS Procurement Checklist. When evaluating database and transit encryption vendors, teams must document algorithm compatibility, TLS configuration review ownership, and PostgreSQL storage driver support prior to procurement sign-off."
+  },
+  {
+    "id": "distractor-password-training",
+    "docId": "doc-iso27001",
+    "version": 1,
+    "source": "cybersecurity-policy-iso27001.pdf",
+    "page": 11,
+    "chunkIndex": 10,
+    "content": "Privileged Administrative Account MFA Onboarding Guide. New hires requesting administrative accounts must attend the password hygiene and MFA enrollment workshop. Minimum password length and hardware authenticator specifications are maintained in Clause A.9."
+  },
+  {
+    "id": "distractor-rpo-rto-definitions",
+    "docId": "doc-iso27001",
+    "version": 1,
+    "source": "cybersecurity-policy-iso27001.pdf",
+    "page": 12,
+    "chunkIndex": 11,
+    "content": "Business Continuity Terminology: RPO and RTO Definitions. Recovery Point Objective (RPO) measures maximum tolerable data loss, while Recovery Time Objective (RTO) measures maximum tolerable downtime for compliance services. Specific Tier-1 numeric targets are published in Clause A.17."
+  },
+  {
+    "id": "distractor-cvss-scoring",
+    "docId": "doc-audit-tables",
+    "version": 1,
+    "source": "security-controls-audit-tables.pdf",
+    "page": 9,
+    "chunkIndex": 8,
+    "content": "CVSS Vulnerability Triage Workflow for Internet-Facing Services. Security engineers classify every reported vulnerability using CVSS v3.1 base scores to distinguish critical, high, medium, and low findings before assigning patch tickets to service owners."
+  },
+  {
+    "id": "distractor-siem-architecture",
+    "docId": "doc-audit-tables",
+    "version": 1,
+    "source": "security-controls-audit-tables.pdf",
+    "page": 10,
+    "chunkIndex": 9,
+    "content": "SIEM Archive Integration Overview. Security and authentication audit logs are forwarded from Kubernetes nodes to the central SIEM archive pipeline using Fluent Bit collectors with mutual TLS transport and JSON schema validation."
+  },
+  {
+    "id": "distractor-offboarding-checklist",
+    "docId": "doc-audit-tables",
+    "version": 1,
+    "source": "security-controls-audit-tables.pdf",
+    "page": 11,
+    "chunkIndex": 10,
+    "content": "Terminated Employee HR Offboarding Form. Managers submit the offboarding form to trigger SSO, VPN, laptop return, and badge collection workflows. Revocation SLA hours are governed by the Access Review and Offboarding Controls table."
+  },
+  {
+    "id": "distractor-hmac-implementation",
+    "docId": "doc-audit-tables",
+    "version": 1,
+    "source": "security-controls-audit-tables.pdf",
+    "page": 12,
+    "chunkIndex": 11,
+    "content": "Webhook HMAC Signing Secret Implementation Notes. Vendors compute an HMAC-SHA256 signature header using the shared signing secret. Engineers must use constant-time byte comparison when verifying webhook signatures during rotation overlap windows."
+  },
+  {
+    "id": "distractor-deploy-pipeline",
+    "docId": "doc-audit-tables",
+    "version": 1,
+    "source": "security-controls-audit-tables.pdf",
+    "page": 13,
+    "chunkIndex": 12,
+    "content": "Production Code Deployment Pipeline Architecture. Continuous delivery builds container images in GitHub Actions, publishes SBOM artifacts to the internal registry, and deploys rolling updates to production clusters once required approvals are recorded."
+  },
+  {
+    "id": "distractor-mtls-overview",
+    "docId": "doc-zero-trust",
+    "version": 1,
+    "source": "zero-trust-architecture-twocolumn.pdf",
+    "page": 9,
+    "chunkIndex": 8,
+    "content": "Internal Microservices Certificate Authority Operations. The platform team monitors internal microservices certificate issuance metrics, rotation health dashboards, and TTL expiration alerts across all service mesh namespaces."
+  },
+  {
+    "id": "distractor-egress-monitoring",
+    "docId": "doc-zero-trust",
+    "version": 1,
+    "source": "zero-trust-architecture-twocolumn.pdf",
+    "page": 10,
+    "chunkIndex": 9,
+    "content": "Outbound Requests Audit Dashboard for Ingestion Workers. Network operators review weekly egress proxy telemetry showing allowed and blocked outbound destinations requested by ingestion workers to tune alerting thresholds."
+  },
+  {
+    "id": "distractor-rag-overview",
+    "docId": "doc-zero-trust",
+    "version": 1,
+    "source": "zero-trust-architecture-twocolumn.pdf",
+    "page": 11,
+    "chunkIndex": 10,
+    "content": "RAG Pipeline Architecture and Vector Search Components. The retrieval-augmented generation pipeline combines document chunking, pgvector vector search, cross-encoder reranking, and multi-tenant audit logging across organizational units."
+  },
+  {
+    "id": "distractor-jit-audit",
+    "docId": "doc-zero-trust",
+    "version": 1,
+    "source": "zero-trust-architecture-twocolumn.pdf",
+    "page": 12,
+    "chunkIndex": 11,
+    "content": "Just-In-Time Elevated Production Access Audit Trail. Every Just-In-Time troubleshooting session generates an immutable transcript stored in the compliance bucket for quarterly review by Internal Audit."
+  },
+  {
+    "id": "distractor-gateway-routing",
+    "docId": "doc-zero-trust",
+    "version": 1,
+    "source": "zero-trust-architecture-twocolumn.pdf",
+    "page": 13,
+    "chunkIndex": 12,
+    "content": "API Gateway Per-Tenant Routing and Payload Telemetry. The API Gateway logs per-tenant request counts, payload size histograms, and rate limit header metrics to Prometheus for capacity planning."
+  },
+  {
+    "id": "distractor-vendor-onboarding",
+    "docId": "doc-iso27001",
+    "version": 1,
+    "source": "cybersecurity-policy-iso27001.pdf",
+    "page": 13,
+    "chunkIndex": 12,
+    "content": "SaaS Vendor Intake Form for Restricted and Confidential Data. Procurement collects vendor legal entity details, data residency region, and security contact emails before Legal reviews certification evidence under Clause A.15."
+  },
+  {
+    "id": "distractor-table-of-contents",
+    "docId": "doc-iso27001",
+    "version": 1,
+    "source": "cybersecurity-policy-iso27001.pdf",
+    "page": 0,
+    "chunkIndex": 13,
+    "content": "Policy Index: Access Control, Password Length, MFA, Cryptographic Encryption, TLS, Data Breach Notification, SaaS Vendor Certification, RPO, RTO, Audit Log Retention, CVSS Vulnerability Patching, and Zero-Trust mTLS."
+  }
+]
