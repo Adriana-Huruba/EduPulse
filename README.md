@@ -281,14 +281,18 @@ Tests (no database or Ollama needed): `TextChunkerTest`, `HtmlExtractorTest`, `P
 
 ### Story 3: Pre-retrieval pipeline (`retrieval-pre`, port 8083)
 
-**Present now:** the Spring Boot module with embedding and pgvector dependencies, Eureka registration, and datasource and embedding configuration. The assignment expects `classpath:acronyms.yml`, which **does not exist yet**.
+**Present now:** the Spring Boot service validates metadata filters, normalizes queries, and runs full-text search against the shared PostgreSQL `vector_store` table. It registers with Eureka and is reachable through the gateway.
 
 | Task | Status |
 |---|---|
-| 1. Safe metadata filtering (validated filter object, whitelisted fields, explicit errors) | Not started |
-| 2. Query normalization (ordered, precompiled, ReDoS-safe regex rules) | Not started |
+| 1. Safe metadata filtering (validated filter object, whitelisted fields, explicit errors) | **Done** |
+| 2. Query normalization (ordered, precompiled, ReDoS-safe regex rules) | **Done** |
 | 3. Acronym and synonym expansion | Not started |
 | 4. Multi-query expander with result fusion and a cost/latency cap | Not started |
+
+`GET /retrieval-pre/search` takes a query and optional `field:operator:value` filters. The service validates allowed fields, operators, and value types before running SQL. Filter values are bound as SQL parameters. Conditions combine with `AND` by default or with `OR` on request. Without filters, the service runs the standard text search and returns up to 20 ranked chunks with source metadata. Invalid filters return HTTP 400 with the list of allowed fields.
+
+Query normalization removes leading polite phrases and trailing question marks using ordered, precompiled rules. The same input can be normalized repeatedly without changing the result. The original query is logged with control characters escaped, and a query that becomes empty returns HTTP 400. All 42 tests passed with the PostgreSQL integration test enabled. The [module README](retrieval-pre/README.md) includes API examples, Docker instructions, and the Postman collection.
 
 ### Story 4: Post-retrieval and grounding (`retrieval-post`, port 8084)
 
