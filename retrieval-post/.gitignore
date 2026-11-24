@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Downloaded ONNX model weights (fetched from pinned HF revision) ###
+models/

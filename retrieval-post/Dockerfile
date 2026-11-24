@@ -14,6 +14,7 @@ RUN apt-get update \
  && useradd --system --no-create-home app
 WORKDIR /app
 COPY --from=build /build/target/*.jar app.jar
+RUN mkdir -p /app/models/reranker && chown -R app:app /app/models
 USER app
 EXPOSE 8084
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
